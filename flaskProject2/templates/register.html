@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Регистрация</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="email"],
+        input[type="text"],
+        input[type="password"] {
+            width: 300px;
+            height: 30px;
+            padding: 5px;
+            font-size: 14px;
+        }
+        input[type="submit"] {
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        a {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Регистрация</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form action="/register" method="POST">
+        <div>
+            <label>Email:</label>
+            <input type="email" name="email" required>
+        </div>
+        <div>
+            <label>Логин:</label>
+            <input type="text" name="username" required>
+        </div>
+        <div>
+            <label>Пароль:</label>
+            <input type="password" name="password" required>
+        </div>
+        <div>
+            <input type="submit" value="Зарегистрироваться">
+        </div>
+    </form>
+    <p>Уже зарегистрированы? <a href="/login">Войти</a></p>
+</body>
+</html>
+
